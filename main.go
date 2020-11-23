@@ -20,13 +20,27 @@ import (
 type flagOptions struct {
 	namespace  *string
 	kubeconfig *string
+	o          *string
+	output     *string
 }
 
 var flags flagOptions
 
+func init() {
+	const (
+		defaultOutput   = "wide"
+		outputUsage     = "output format"
+		namespaceUsage  = "namespace to search for secret(s)"
+		kubeconfigUsage = "path to search for kubeconfig file"
+	)
+
+	flags.namespace = flag.String("namespace", apiv1.NamespaceDefault, namespaceUsage)
+	flags.kubeconfig = flag.String("kubeconfig", getKubeConfig(), kubeconfigUsage)
+	flags.output = flag.String("output", defaultOutput, outputUsage)
+	flags.o = flag.String("o", defaultOutput, outputUsage+" (shorthand)")
+}
+
 func main() {
-	flags.namespace = flag.String("namespace", apiv1.NamespaceDefault, "namespace to search for secrets")
-	flags.kubeconfig = flag.String("kubeconfig", getKubeConfig(), "path to search for kubeconfig file")
 	flag.Parse()
 
 	config, err := clientcmd.BuildConfigFromFlags("", *flags.kubeconfig)
