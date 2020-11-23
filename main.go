@@ -56,32 +56,7 @@ func main() {
 	// this will replace the lines below
 	list, err := getSecrets(clientset, *flags.namespace)
 
-	w := tabwriter.NewWriter(os.Stdout, 0, 0, 8, ' ', 0)
-	fmt.Fprintln(w, "NAME\tKEY\tVALUE")
-
-	for _, s := range list.Items {
-		// dont show the default service account token secret
-		if strings.Contains(s.ObjectMeta.GetName(), "default-token") {
-			continue
-		}
-
-		i := 1
-		secretName := s.GetName()
-
-		for k, v := range s.Data {
-			switch {
-			case i == 1:
-				fmt.Fprintf(w, "%s\t%s\t%s\n", secretName, k, string(v))
-			case i == len(s.Data):
-				fmt.Fprintf(w, "└── %s\t%s\t%s\n", "", k, string(v))
-			default:
-				fmt.Fprintf(w, "├── %s\t%s\t%s\n", "", k, string(v))
-			}
-
-			i++
-		}
-		w.Flush()
-	}
+	widePrintSecrets(list.Items)
 }
 
 // getSecrets creates the secrets clients from corev1 api
@@ -106,4 +81,33 @@ func getKubeConfig() string {
 		return kCfgPath
 	}
 	return filepath.Join(homedir.HomeDir(), ".kube", "config")
+}
+
+func widePrintSecrets(secrets []apiv1.Secret) {
+	w := tabwriter.NewWriter(os.Stdout, 0, 0, 8, ' ', 0)
+	fmt.Fprintln(w, "NAME\tKEY\tVALUE")
+
+	for _, s := range secrets {
+		// dont show the default service account token secret
+		if strings.Contains(s.ObjectMeta.GetName(), "default-token") {
+			continue
+		}
+
+		i := 1
+		secretName := s.GetName()
+
+		for k, v := range s.Data {
+			switch {
+			case i == 1:
+				fmt.Fprintf(w, "%s\t%s\t%s\n", secretName, k, string(v))
+			case i == len(s.Data):
+				fmt.Fprintf(w, "└── %s\t%s\t%s\n", "", k, string(v))
+			default:
+				fmt.Fprintf(w, "├── %s\t%s\t%s\n", "", k, string(v))
+			}
+
+			i++
+		}
+		w.Flush()
+	}
 }
