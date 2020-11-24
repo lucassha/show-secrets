@@ -33,10 +33,10 @@ func createJsonObject(secrets []apiv1.Secret) DecodedSecretList {
 	d.Items = len(secrets)
 
 	for i, s := range secrets {
-		if strings.Contains(s.ObjectMeta.GetName(), "default-token") {
-			d.Items--
-			continue
-		}
+		// if strings.Contains(s.ObjectMeta.GetName(), "default-token") {
+		// 	d.Items--
+		// 	continue
+		// }
 
 		d.DecodedSecrets[i].Name = s.GetName()
 		j := 0
@@ -57,11 +57,6 @@ func createJsonObject(secrets []apiv1.Secret) DecodedSecretList {
 // jsonPrintSecrets takes a list of secrets and prints the
 // decoded secret output in json, similar to `kubectl get * -o json`
 func jsonPrintSecrets(secrets []apiv1.Secret) {
-	// marshal secrets
-	// print output
-	// use json.MarshallIndent for pretty printing
-	// https://stackoverflow.com/questions/19038598/how-can-i-pretty-print-json-using-go
-
 	d := createJsonObject(secrets)
 	b, _ := json.MarshalIndent(&d, "", "  ")
 	fmt.Println(string(b))
