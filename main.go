@@ -52,10 +52,15 @@ func main() {
 		fmt.Fprintf(os.Stdout, "Could not create clientset from config: %v", err)
 	}
 
-	// this will replace the lines below
 	list, err := getSecrets(clientset, *flags.namespace)
 
-	widePrintSecrets(list.Items)
+	// print output based on -o or --output flag
+	switch {
+	case *flags.o == jsonOutput:
+		jsonPrintSecrets(list.Items)
+	default:
+		widePrintSecrets(list.Items)
+	}
 }
 
 // getSecrets creates the secrets clients from corev1 api
