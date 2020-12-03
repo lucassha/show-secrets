@@ -17,7 +17,7 @@ kubectl show secrets
 
 In order to see all flags: `show-secrets --help`
 
-Generally speaking, `show secrets` implements flags with the same pattern as `kubectl`. As of now, output, namespace, and kubeconfig flags are enabled.
+Generally speaking, `show-secrets` implements flags with the same pattern as `kubectl`. As of now, output, namespace, and kubeconfig flags are enabled.
 
 ```bash
 # show secrets for devs namespace
