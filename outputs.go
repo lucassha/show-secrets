@@ -10,19 +10,14 @@ import (
 	apiv1 "k8s.io/api/core/v1"
 )
 
-type Secret struct {
-	Key   string `json:"key"`
-	Value string `json:"value"`
-}
-
 type DecodedSecret struct {
-	Name    string   `json:"name"`
-	Secrets []Secret `json:"secrets"`
+	Name string            `json:"name"`
+	Data map[string]string `json:"data"`
 }
 
 type DecodedSecretList struct {
 	Items          int             `json:"items"`
-	DecodedSecrets []DecodedSecret `json:"decodedSecrets"`
+	DecodedSecrets []DecodedSecret `json:"secrets"`
 }
 
 func createJsonObject(secrets []apiv1.Secret) DecodedSecretList {
@@ -34,15 +29,12 @@ func createJsonObject(secrets []apiv1.Secret) DecodedSecretList {
 
 	for i, s := range secrets {
 		d.DecodedSecrets[i].Name = s.GetName()
-		j := 0
 
 		// instantiate a new block of memory for slice of secrets
-		d.DecodedSecrets[i].Secrets = make([]Secret, len(s.Data))
+		d.DecodedSecrets[i].Data = make(map[string]string)
 
 		for k, v := range s.Data {
-			d.DecodedSecrets[i].Secrets[j].Key = string(k)
-			d.DecodedSecrets[i].Secrets[j].Value = string(v)
-			j++
+			d.DecodedSecrets[i].Data[string(k)] = string(v)
 		}
 	}
 
