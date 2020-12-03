@@ -1,0 +1,19 @@
+name: Unit testing
+
+on: push
+
+jobs:
+  run-go-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install Go
+        uses: actions/setup-go@v2
+      # - name: Configure git for private modules
+        # env: 
+        #   TOKEN: ${{ secrets.PERSONAL_GITHUB_ACCESS_TOKEN }}
+        #   USER: lucassha
+        # run: git config --global url."https://${USER}:${TOKEN}@github.com".insteadOf "https://github.com"
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Testing
+        run: go test ./...
