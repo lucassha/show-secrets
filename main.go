@@ -17,6 +17,7 @@ import (
 
 type flagOptions struct {
 	namespace  *string
+	n          *string
 	kubeconfig *string
 	o          *string
 	output     *string
@@ -34,7 +35,7 @@ var flags flagOptions
 
 func init() {
 	flags.namespace = flag.String("namespace", apiv1.NamespaceDefault, namespaceUsage)
-	flags.namespace = flag.String("n", apiv1.NamespaceDefault, namespaceUsage+" (shorthand)")
+	flags.n = flag.String("n", apiv1.NamespaceDefault, namespaceUsage+" (shorthand)")
 	flags.kubeconfig = flag.String("kubeconfig", getKubeConfig(), kubeconfigUsage)
 	flags.output = flag.String("output", defaultOutput, outputUsage)
 	flags.o = flag.String("o", defaultOutput, outputUsage+" (shorthand)")
