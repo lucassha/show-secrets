@@ -16,9 +16,9 @@ import (
 )
 
 type flagOptions struct {
+	kubeconfig *string
 	namespace  *string
 	n          *string
-	kubeconfig *string
 	o          *string
 	output     *string
 }
