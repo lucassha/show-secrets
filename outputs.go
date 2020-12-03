@@ -33,11 +33,6 @@ func createJsonObject(secrets []apiv1.Secret) DecodedSecretList {
 	d.Items = len(secrets)
 
 	for i, s := range secrets {
-		// if strings.Contains(s.ObjectMeta.GetName(), "default-token") {
-		// 	d.Items--
-		// 	continue
-		// }
-
 		d.DecodedSecrets[i].Name = s.GetName()
 		j := 0
 
