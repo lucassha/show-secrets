@@ -20,7 +20,7 @@ type DecodedSecretList struct {
 	DecodedSecrets []DecodedSecret `json:"secrets"`
 }
 
-func createJsonObject(secrets []apiv1.Secret) DecodedSecretList {
+func createDecodedObject(secrets []apiv1.Secret) DecodedSecretList {
 	d := DecodedSecretList{}
 
 	// instantiate a new block of memory for slice of decodedSecrets
@@ -44,7 +44,7 @@ func createJsonObject(secrets []apiv1.Secret) DecodedSecretList {
 // jsonPrintSecrets takes a list of secrets and prints the
 // decoded secret output in json, similar to `kubectl get * -o json`
 func jsonPrintSecrets(secrets []apiv1.Secret) {
-	d := createJsonObject(secrets)
+	d := createDecodedObject(secrets)
 	b, _ := json.MarshalIndent(&d, "", "  ")
 	fmt.Println(string(b))
 }
