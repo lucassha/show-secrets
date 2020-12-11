@@ -11,8 +11,8 @@ ls -al
 pwd
 
 # build both binaries
-go build -o show-secrets ../
-go build -o kubectl-show-secrets ../
+go build -o show-secrets
+go build -o kubectl-show-secrets
 
 echo "WE MADE IT THIS FAR"
 
