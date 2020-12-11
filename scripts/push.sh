@@ -10,5 +10,7 @@ LATEST_RELEASE=$(git tag --tags --abbrev=0)
 go build -o show-secrets ../
 go build -o kubectl-show-secrets ../
 
+echo "WE MADE IT THIS FAR"
+
 # todo 
 # update 
