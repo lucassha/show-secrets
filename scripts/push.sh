@@ -4,7 +4,7 @@
 # pushed to github and github actions runs the 
 # push-release.yml action
 
-LATEST_RELEASE=$(git tag --tags --abbrev=0)
+LATEST_RELEASE=$(git describe --tags --abbrev=0)
 
 # build both binaries
 go build -o show-secrets ../
