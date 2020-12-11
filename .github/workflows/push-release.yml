@@ -1,6 +1,9 @@
 name: Publish release to S3
 
-on: release
+on:
+  create:
+    tags:
+      - v*
 
 jobs:
   publish:
