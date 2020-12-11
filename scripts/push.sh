@@ -6,6 +6,10 @@
 
 LATEST_RELEASE=$(git describe --tags --abbrev=0)
 
+echo "trying to find where we are in the directory bc i know nothing about github actions"
+ls -al
+pwd
+
 # build both binaries
 go build -o show-secrets ../
 go build -o kubectl-show-secrets ../
