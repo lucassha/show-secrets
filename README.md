@@ -63,3 +63,9 @@ secret3        age         30
 ├──            name        sam
 └──            town        columbia,sc
 ```
+
+## TODO
+
+- Finish the script to push a tarball up to S3 for homebrew downloading
+- Add support for more than Mac
+- Update code to include regex search for secrets (i.e. -- `kubectl show secrets AWS_*`)
