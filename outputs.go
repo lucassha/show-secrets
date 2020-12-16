@@ -30,7 +30,7 @@ func createDecodedObject(secrets []apiv1.Secret) DecodedSecretList {
 	for i, s := range secrets {
 		d.DecodedSecrets[i].Name = s.GetName()
 
-		// instantiate a new block of memory for slice of secrets
+		// instantiate a new block of memory for the map
 		d.DecodedSecrets[i].Data = make(map[string]string)
 
 		for k, v := range s.Data {

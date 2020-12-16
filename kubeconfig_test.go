@@ -9,6 +9,8 @@ import (
 	"k8s.io/client-go/util/homedir"
 )
 
+// TestGetKubeconfigEnvVar tests getKubeconfig when
+// KUBECONFIG environment variable is set
 func TestGetKubeconfigEnvVar(t *testing.T) {
 	// dont overwrite the kubeconfig path if it exists
 	var tmp string
@@ -35,6 +37,8 @@ func TestGetKubeconfigEnvVar(t *testing.T) {
 	}
 }
 
+// TestGetKubeconfigEnvVar tests getKubeconfig when
+// KUBECONFIG environment variable is not set
 func TestKubeConfig(t *testing.T) {
 	// dont overwrite the kubeconfig path if it exists
 	var tmp string

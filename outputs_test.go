@@ -9,7 +9,7 @@ import (
 )
 
 // TestCreateJsonObject tests struct creation of decoded kubernetes secrets
-// into a DecodedSecretList struct object
+// into a DecodedSecretList object
 func TestCreateDecodedObject(t *testing.T) {
 	testTable := []struct {
 		name    string

@@ -67,7 +67,6 @@ func main() {
 
 // getSecrets creates the secrets clients from corev1 api
 // and returns all secrets in the designated namespace
-// func getSecrets(c *kubernetes.Clientset, namespace string) (*apiv1.SecretList, error) {
 func getSecrets(c kubernetes.Interface, namespace string) (*apiv1.SecretList, error) {
 	secretsClient := c.CoreV1().Secrets(namespace)
 	list, err := secretsClient.List(context.TODO(), metav1.ListOptions{})
@@ -77,8 +76,7 @@ func getSecrets(c kubernetes.Interface, namespace string) (*apiv1.SecretList, er
 	return list, nil
 }
 
-// getKubeConfig passes back the user's kubeconfig file and will
-// only be called when --kubeconfig is not overridden
+// getKubeConfig passes back the user's kubeconfig file  path
 // first precendence is KUBECONFIG env var
 // if not set, return $HOME/.kube/config
 func getKubeConfig() string {
