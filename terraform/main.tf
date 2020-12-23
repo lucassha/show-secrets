@@ -49,7 +49,17 @@ resource "aws_iam_user_policy" "s3_user_policy" {
       "Sid": "S3AllowToReleasesBucket",
       "Action": "s3:*",
       "Effect": "Allow",
-      "Resource": "arn:aws:s3:::${aws_s3_bucket.show_secrets_bucket.bucket}"
+      "Resource": [
+        "arn:aws:s3:::${aws_s3_bucket.show_secrets_bucket.bucket}",
+        "arn:aws:s3:::${aws_s3_bucket.show_secrets_bucket.bucket}/*"
+      ]
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+          "s3:ListAllMyBuckets"
+      ],
+      "Resource": "arn:aws:s3:::*"
     }
   ]
 }
