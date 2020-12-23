@@ -19,4 +19,4 @@ GOOS=${OS} GOARCH=${ARCH} go build -o kubectl-show-secrets
 
 tar -czvf ${S3_TARBALL}-${LATEST_RELEASE} ./kubectl-show-secrets ./show-secrets
 
-aws s3 cp ${S3_TARBALL}-${LATEST_RELEASE} s3://${S3_BUCKET}/releases/${LATEST_RELEASE} --profile shannon
+aws s3 cp ${S3_TARBALL}-${LATEST_RELEASE} s3://${S3_BUCKET}/releases/${LATEST_RELEASE}
