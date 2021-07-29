@@ -1,11 +1,5 @@
 name: Publish release to S3
 
-# this flow isn't working. attempting to update with another way.
-# on:
-#   create:
-#     tags:
-#       - v*
-
 on:
   push:
     branches:
