@@ -74,7 +74,7 @@ func getSecrets(c kubernetes.Interface, namespace string) (*apiv1.SecretList, er
 	secretsClient := c.CoreV1().Secrets(namespace)
 	list, err := secretsClient.List(context.TODO(), metav1.ListOptions{})
 	if err != nil {
-		return &apiv1.SecretList{}, fmt.Errorf("Could not list secrets: %v", err)
+		return &apiv1.SecretList{}, fmt.Errorf("could not list secrets: %v", err)
 	}
 	return list, nil
 }
