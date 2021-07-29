@@ -4,5 +4,6 @@ This Terraform creates the necessary AWS resources to allow for GitHub Actions t
 
 It hosts:
 * S3 bucket
+* S3 bucket policy
 * IAM user
 * IAM user policy
