@@ -64,6 +64,12 @@ secret3        age         30
 └──            town        columbia,sc
 ```
 
+## Installation
+
+Currently only implemented for Mac. Creates two binaries in `/usr/local/bin/`.
+
+`brew install lucassha/homebrew/show-secrets`
+
 ## TODO
 
 - Finish the script to push a tarball up to S3 for homebrew downloading
