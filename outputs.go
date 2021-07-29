@@ -79,3 +79,5 @@ func widePrintSecrets(secrets []apiv1.Secret) {
 		w.Flush()
 	}
 }
+
+// random code to generate testing. s3 pub should not be running.
