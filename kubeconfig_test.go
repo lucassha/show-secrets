@@ -15,6 +15,7 @@ func TestGetKubeconfigEnvVar(t *testing.T) {
 	// dont overwrite the kubeconfig path if it exists
 	var tmp string
 	if os.Getenv("KUBECONFIG") != "" {
+		tmp = os.Getenv("KUBECONFIG")
 		os.Unsetenv("KUBECONFIG")
 		// re-write upon exit
 		defer os.Setenv("KUBECONFIG", tmp)
@@ -43,12 +44,13 @@ func TestKubeConfig(t *testing.T) {
 	// dont overwrite the kubeconfig path if it exists
 	var tmp string
 	if os.Getenv("KUBECONFIG") != "" {
+		tmp = os.Getenv("KUBECONFIG")
 		os.Unsetenv("KUBECONFIG")
 		// re-write upon exit
 		defer os.Setenv("KUBECONFIG", tmp)
 	}
 
-	expectedPath := filepath.Join(homedir.HomeDir(), ".kube", "config")
+	expectedPath := filepath.Join(homedir.HomeDir(), ".kube", "config") // ~/.kube/config
 	actualPath := getKubeConfig()
 	assert.Equal(t, expectedPath, actualPath, "they should be equal")
 }
