@@ -55,6 +55,9 @@ func main() {
 	}
 
 	list, err := getSecrets(clientset, *flags.namespace)
+	if err != nil {
+		fmt.Fprintf(os.Stdout, "Could not get secrets: %v", err)
+	}
 
 	// print output based on -o or --output flag
 	switch {

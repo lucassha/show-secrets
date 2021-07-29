@@ -19,7 +19,7 @@ func TestCreateDecodedObject(t *testing.T) {
 		{
 			name: "test case 1",
 			secrets: []apiv1.Secret{
-				apiv1.Secret{
+				{
 					ObjectMeta: metav1.ObjectMeta{
 						Name: "test1",
 					},
@@ -31,7 +31,7 @@ func TestCreateDecodedObject(t *testing.T) {
 			decoded: DecodedSecretList{
 				Items: 1,
 				DecodedSecrets: []DecodedSecret{
-					DecodedSecret{
+					{
 						Name: "test1",
 						Data: map[string]string{
 							"data": "thisisnotrealdata",
