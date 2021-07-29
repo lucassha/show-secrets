@@ -10,7 +10,7 @@ import (
 	testclient "k8s.io/client-go/kubernetes/fake"
 )
 
-func CreateFakeClientAndData(t *testing.T) *testclient.Clientset {
+func CreateFakeClientAndData(t testing.TB) *testclient.Clientset {
 	t.Helper()
 	clientset := testclient.NewSimpleClientset()
 
