@@ -8,7 +8,7 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
 
-// TestCreateJsonObject tests struct creation of decoded kubernetes secrets
+// TestCreateDecodedObject tests struct creation of decoded kubernetes secrets
 // into a DecodedSecretList object
 func TestCreateDecodedObject(t *testing.T) {
 	testTable := []struct {
