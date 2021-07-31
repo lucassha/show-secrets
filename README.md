@@ -68,7 +68,10 @@ secret3        age         30
 
 Currently only implemented for Mac. Creates two binaries in `/usr/local/bin/`.
 
-`brew install lucassha/homebrew/show-secrets`
+```sh
+brew tap lucassha/homebrew
+brew install lucassha/homebrew/show-secrets
+```
 
 ## TODO
 
