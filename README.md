@@ -1,5 +1,8 @@
 ## show-secrets
 
+![Testing](https://github.com/lucassha/show-secrets/actions/workflows/test.yml/badge.svg)
+![Release](https://github.com/lucassha/show-secrets/actions/workflows/push-release.yml/badge.svg)
+
 Show all decoded secrets in a Kubernetes namespace.
 
 Kubernetes secrets are base64 encoded, and as such, generally require some manipulation with `jq` in order to properly parse what the secret values are. This CLI allows for a quick check of the decoded values for each secret.
